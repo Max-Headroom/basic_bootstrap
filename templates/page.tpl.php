@@ -87,14 +87,13 @@
 
 <div class="main-container container">
   <div class="row">
-
-    <?php if (!empty($page['sidebar_first'])): ?>
+    <?php if (!empty($page['sidebar_first']) && count($page['sidebar_first']) > 2): ?>
       <aside class="col-sm-3" role="complementary">
         <?php print render($page['sidebar_first']); ?>
       </aside>  <!-- /#sidebar-first -->
     <?php endif; ?>
 
-    <?php if (!empty($page['highlighted'])): ?>
+    <?php if (!empty($page['highlighted']) && count($page['highlighted']) > 2): ?>
       <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
     <?php endif; ?>
     <?php
@@ -112,15 +111,15 @@
     <?php if (!empty($tabs)): ?>
       <?php print render($tabs); ?>
     <?php endif; ?>
-    <?php if (!empty($page['help'])): ?>
+    <?php if (!empty($page['help']) && count($page['help']) > 2): ?>
       <?php print render($page['help']); ?>
     <?php endif; ?>
-    <?php if (!empty($action_links)): ?>
+    <?php if (!empty($action_links) && count($page['action_links']) > 2): ?>
       <ul class="action-links"><?php print render($action_links); ?></ul>
     <?php endif; ?>
     <?php print render($page['content']); ?>
 
-    <?php if (!empty($page['sidebar_second'])): ?>
+    <?php if (!empty($page['sidebar_second']) && count($page['sidebar_second']) > 2): ?>
       <aside class="col-sm-3" role="complementary">
         <?php print render($page['sidebar_second']); ?>
       </aside>  <!-- /#sidebar-second -->
@@ -128,6 +127,8 @@
 
   </div>
 </div>
-<footer class="footer container">
-  <?php print render($page['footer']); ?>
-</footer>
+<?php if (!empty($page['footer']) && count($page['footer']) > 2): ?>
+  <footer class="footer container">
+    <?php print render($page['footer']); ?>
+  </footer>
+<?php endif; ?>
